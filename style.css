@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    background: #eef9bf;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    
+}
+
+.header {
+background: blue;
+margin-bottom: 47px;
+}
+.titulo {
+    width: auto;
+    height: 63px;
+   
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+
+    color: #75B79E;
+
+}
+.main-content {
+    background: red;
+    flex-wrap: wrap;
+}
+
+.cards {
+    width: 117px;
+    height: 146px;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+}
+
+.parrot {
+width: 100px;
+height: 100px;
+margin: 24px 22px 10px 7px;
+
+}
