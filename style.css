@@ -6,9 +6,6 @@ body {
     background: #eef9bf;
 }
 
-
-
-
 .titulo {
     
     text-align: center;
@@ -40,6 +37,12 @@ body {
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.flip {
+    transform: rotateY(180deg);
 }
 
 .parrot {
