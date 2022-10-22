@@ -1,4 +1,5 @@
 let numberOfCards = 0;
+let lockBoard = false;
 const cardsList = [];
 const cardsImage = ["'bobrossparrot'","'explodyparrot'","'fiestaparrot'","'metalparrot'","'revertitparrot'","'tripletsparrot'","'unicornparrot'"];
 
@@ -59,7 +60,7 @@ function shuffle(){
 
 function makeMove(card, image) {
 
-  const cardSelected = document.querySelector(".flip");
+  const cardSelected = document.querySelector(".flip:not(.match)");
   
   flip(card,image);
 
@@ -70,23 +71,26 @@ function makeMove(card, image) {
   if (cardSelectedImg === image) {
     card.setAttribute('onclick','');
     cardSelected.setAttribute('onclick','');
+    card.classList.add('match');
+    cardSelected.classList.add('match');
   } else {
     setTimeout(flip,1000, card);
     setTimeout(flip,1000, cardSelected);
   }
 
-
-
-  
 }
 
 
 function flip(card,image='') {
 
+  
+
   if(card.classList.contains("flip")) {
+    
     card.classList.remove("flip");
     card.innerHTML = '<img class = "parrot"src="./images/back.png" alt="">';
   } else {
+    
     card.classList.add("flip");
     card.innerHTML = `<img class = "parrot"src="./images/${image}.gif" alt=""></img>`
     }
