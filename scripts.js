@@ -1,5 +1,6 @@
 let numberOfCards = 0;
-let lockBoard = false;
+let moveCount = 0;
+let matchCount = 0;
 const cardsList = [];
 const cardsImage = ["'bobrossparrot'","'explodyparrot'","'fiestaparrot'","'metalparrot'","'revertitparrot'","'tripletsparrot'","'unicornparrot'"];
 
@@ -49,6 +50,7 @@ function placeCards (){
         <img class = "parrot" src="./images/back.png" alt="">
     </div> `) ;
         
+        
       }
       cardsList.sort(shuffle);
       elemento.innerHTML = cardsList.join(' ');
@@ -59,7 +61,7 @@ function shuffle(){
 }
 
 function makeMove(card, image) {
-
+  moveCount++;
   const cardSelected = document.querySelector(".flip:not(.match)");
   
   flip(card,image);
@@ -69,14 +71,19 @@ function makeMove(card, image) {
   const cardSelectedImg = getImage(cardSelected.querySelector('img'));
   
   if (cardSelectedImg === image) {
+    matchCount++;
     card.setAttribute('onclick','');
     cardSelected.setAttribute('onclick','');
     card.classList.add('match');
     cardSelected.classList.add('match');
+    
   } else {
     setTimeout(flip,1000, card);
     setTimeout(flip,1000, cardSelected);
   }
+
+  if (matchCount === cardsList.length/2) endGame();
+  
 
 }
 
@@ -96,7 +103,8 @@ function flip(card,image='') {
     }
 }
 
-//cada clique some uma jogada
-// comparar as duas cartas clicadas 
-// se imagem da primeira === imagem da segunda, entao permaneça virada
-// caso contrario, desvire as duas cartas e conte uma jogada 
+function endGame(){
+
+    setTimeout (()=> {alert (`Você ganhou em ${moveCount} jogadas!`);
+  }, 1000)
+}
